@@ -5,12 +5,10 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 
-
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Ecommerce", href: "#", current: true },
+  { name: "Products", href: "#", current: false },
+  { name: "Add a Product", href: "#", current: false },
 ];
 
 function classNames(...classes) {
@@ -40,7 +38,7 @@ function Navbar() {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src="https://cdn-icons-png.flaticon.com/128/3176/3176363.png"
                     alt="Your Company"
                   />
                 </div>
@@ -82,7 +80,7 @@ function Navbar() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src="https://cdn-icons-png.flaticon.com/128/6997/6997662.png"
                         alt=""
                       />
                     </Menu.Button>
