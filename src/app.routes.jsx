@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { PublicLayout } from "./Layouts";
-import { AddProduct, ErrorPage, ProductDetails, Products } from "./components";
+import { AddProduct, ErrorPage, ProductDetails, Products, CartTwo } from "./components";
 
 const appRoutes = createBrowserRouter([
   {
@@ -21,10 +21,10 @@ const appRoutes = createBrowserRouter([
         path: 'add-product',
         element: <AddProduct />,
       }, 
-      // {
-      //   path: 'cart',
-      //   element: ,
-      // },
+      {
+        path: 'cart',
+        element: <CartTwo/> ,
+      },
       // {
       //   path: 'orders',
       //   element: ,
