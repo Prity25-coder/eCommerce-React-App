@@ -1,6 +1,6 @@
 function AddProduct() {
   return (
-    <form className="h-1/2 w-1/3 ml-96 my-10 bg-slate-200 mt-2">
+    <form className="h-1/2 w-1/3 ml-96 my-10 bg-blue-100  mt-35">
       <div className="space-y-12 flex justify-center">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold leading-7 text-gray-900">
@@ -95,6 +95,7 @@ function AddProduct() {
         <button
           type="submit"
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          
         >
           Add
         </button>
