@@ -1,11 +1,18 @@
 import { useParams } from "react-router-dom";
 
 import { StarIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import useFetch from "../../hooks/useFetch";
 
 function ProductDetails() {
   const { productId } = useParams();
 
-  console.log("Product id", productId);
+  const [loading, error, productInfo] = useFetch(`products/${productId}`);
+
+  if (loading) return <p>Loading...</p>;
+
+  if (error) return <p>API is not working: {error}</p>;
+
+  const { image, title } = productInfo ?? {};
 
   return (
     <section className="overflow-hidden">
@@ -14,15 +21,13 @@ function ProductDetails() {
           <img
             alt="Nike Air Max 21A"
             className="h-64 w-full rounded object-cover lg:h-96 lg:w-1/2"
-            src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c2hvZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+            src={image}
           />
           <div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:pl-10">
             <h2 className="text-sm font-semibold tracking-widest text-gray-500">
               Nike
             </h2>
-            <h1 className="my-4 text-3xl font-semibold text-black">
-              Nike Air Max 21A
-            </h1>
+            <h1 className="my-4 text-3xl font-semibold text-black">{title}</h1>
             <div className="my-4 flex items-center">
               <span className="flex items-center space-x-1">
                 {[...Array(5)].map((_, i) => (

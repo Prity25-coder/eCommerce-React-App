@@ -1,29 +1,29 @@
-import { useState, useEffect } from "react";
-import Product from "./Product";
+import { useEffect } from "react";
 
-const URI = "http://localhost:3000/products";
+import { useDispatch, useSelector } from "react-redux";
+
+import Product from "./Product";
+import { config } from "../../config";
+import { getProducts } from "../../Thunk/Product/productThunk";
+import { productSelector } from "../../reducers/products/productsSlice";
+
+const { apiUrl } = config;
 
 function Products() {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const { loading, error, products } = useSelector(productSelector);
 
-  // fetch product function
-  const getProducts = async () => {
-    try {
-      const response = await fetch(URI);
-      const data = await response.json();
-      console.log(data);
-      setProducts(data);
-    } catch (error) {
-      console.log("Error", error);
-    }
-  };
   useEffect(() => {
-    getProducts();
-  }, []);
+    dispatch(getProducts({ url: `${apiUrl}/products` }));
+  }, [dispatch]);
 
   // Add Product
   // Search Product
   // Delete Product
+
+  if (loading) return <p>Loading...</p>;
+
+  if (error) return <p>API is not working: {error}</p>;
 
   return (
     <div className="bg-white">
