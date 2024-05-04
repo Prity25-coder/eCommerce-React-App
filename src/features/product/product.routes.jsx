@@ -1,4 +1,5 @@
 import { AddProduct, ProductDetails, Products } from "../../components";
+import EditProduct from "../../components/EditProduct";
 
 const productRoutes = [
   {
@@ -12,6 +13,10 @@ const productRoutes = [
   {
     path: "add-product",
     element: <AddProduct />,
+  },
+  {
+    path: "update-product",
+    element: <EditProduct />,
   },
 ];
 

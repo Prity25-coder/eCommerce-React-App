@@ -21,10 +21,21 @@ const productsSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
-    addProduct: (state, action) => {},
-    updateProduct: (state, action) => {},
+    addProduct: (state, action) => {
+      state.products.push(action.payload);
+      state.loading = false;
+    },
+    updateProduct: (state, action) => {
+      state.products = state.products.findIndex((product) => product.id === action.payload.id);
+      state.loading = false;
+    },
     sortByPrice: (state, action) => {},
-    deleteProduct: (state, action) => {},
+    
+    deleteProductById: (state, action) => {
+     state.products = state.products.filter((product) => product.id !== action.payload.id);
+     state.loading = false;
+
+    },
   },
 });
 
@@ -37,7 +48,7 @@ export const {
   setApiError,
   updateProduct,
   sortByPrice,
-  deleteProduct,
+  deleteProductById,
 } = productsSlice.actions;
 
 export const productSelector = (store) => store.allProducts;

@@ -3,21 +3,19 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Product from "./Product";
-import { config } from "../../config";
 import { getProducts } from "../../Thunk/Product/productThunk";
 import { productSelector } from "../../reducers/products/productsSlice";
-
-const { apiUrl } = config;
 
 function Products() {
   const dispatch = useDispatch();
   const { loading, error, products } = useSelector(productSelector);
 
   useEffect(() => {
-    dispatch(getProducts({ url: `${apiUrl}/products` }));
+    dispatch(getProducts());
   }, [dispatch]);
 
   // Add Product
+  
   // Search Product
   // Delete Product
 

@@ -11,11 +11,11 @@ const menuItems = [
   {
     name: "Cart",
     href: "/cart",
-    img: "https://cdn-icons-png.flaticon.com/128/3799/3799960.png",
+   
   },
   {
-    name: "Orders",
-    href: "/orders",
+    name: "Update Product",
+    href: "/update-product",
   },
 ];
 

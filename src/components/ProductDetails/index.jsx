@@ -12,7 +12,7 @@ function ProductDetails() {
 
   if (error) return <p>API is not working: {error}</p>;
 
-  const { image, title } = productInfo ?? {};
+  const { image, title, description } = productInfo ?? {};
 
   return (
     <section className="overflow-hidden">
@@ -39,9 +39,7 @@ function ProductDetails() {
               </span>
             </div>
             <p className="leading-relaxed">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
-              rem amet repudiandae neque adipisci eum enim, natus illo inventore
-              totam?
+              {description}
             </p>
             <div className="mb-5 mt-6 flex items-center border-b-2 border-gray-100 pb-5">
               <div className="flex items-center">

@@ -1,31 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "'Nike Air Force 1 07 LV8",
-      "price": 109.95,
-      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "men's clothing",
-      "image": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/54a510de-a406-41b2-8d62-7f8c587c9a7e/air-force-1-07-lv8-shoes-9KwrSk.png",
-      "rating": {
-        "rate": 3.9,
-        "count": 120
-      }
-    },
-    {
-      "id": 2,
-      "title": "Nike Blazer Low 77 SE ",
-      "price": 22.3,
-      "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-      "category": "men's clothing",
-      "image": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e48d6035-bd8a-4747-9fa1-04ea596bb074/blazer-low-77-se-shoes-0w2HHV.png",
-      "rating": {
-        "rate": 4.1,
-        "count": 259
-      }
-    },
-    {
-      "id": 3,
+      "id": "3",
       "title": "Nike Air Max 90",
       "price": 55.99,
       "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
@@ -37,7 +13,7 @@
       }
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Bangles",
       "price": 15.99,
       "description": "Peora Velvet Matching Kundan Floral Silk Thread Chura Bangle Set for Women Girls 2.6 inch Red",
@@ -49,7 +25,7 @@
       }
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Lobster Clasp",
       "price": 695,
       "description": "Peora 18K Gold Plated Traditional Jewellery Kundan Pearl Layered Long Necklace Earring Maang Tika Set for Women Fancy",
@@ -61,7 +37,7 @@
       }
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Stud Earrings",
       "price": 168,
       "description": "Zeneme Oxidised Silver-Plated American Diamond studded Paisley Shaped Studs Earrings for Girls and Women",
@@ -73,7 +49,7 @@
       }
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Butterfly Crystals Gold Plated Ring ",
       "price": 9.99,
       "description": "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
@@ -85,7 +61,7 @@
       }
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Generic",
       "price": 10.99,
       "description": "Women's Casual Long Tunic | Printed Top for Women",
@@ -97,7 +73,7 @@
       }
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Regular Fit",
       "price": 64,
       "description": "TWINSBOYS Women's Cotton Half Sleeve Printed Black T Shirt",
@@ -108,7 +84,7 @@
       }
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "HP, HP India Sales Pvt. Ltd.",
       "price": 109,
       "description": "HP Envy x360, Enhanced by AI, Intel Core Ultra 5 125U, 14-inch (35.6 cm), WUXGA, 16GB LPDDR5, 512GB SSD, Intel Graphics, 5MP IR Camera, Poly Studio (Win 11, MSO 2021, Silver, 1.44 kg), fc0105TU",
@@ -118,6 +94,16 @@
         "rate": 2.9,
         "count": 470
       }
+    },
+    {
+      "id": "a824",
+      "title": "Watch",
+      "image": "https://m.media-amazon.com/images/I/71nD+lzEoBL._SY606_.jpg",
+      "price": "1000",
+      "rating": {
+        "rate": "5"
+      },
+      "description": "Joker & Witch Aimee Analogue Watch"
     }
   ]
 }
