@@ -1,48 +1,60 @@
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { Link, useParams } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
 import useFetch from "../../hooks/useFetch";
-import { updateProduct } from "../../reducers/products/productsSlice";
+import { patchProduct } from "../../Thunk/Product/productThunk";
 
 function EditProduct() {
+  const dispatch = useDispatch();
+  const { productId } = useParams();
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [rating, setRating] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
 
-  const dispatch = useDispatch();
-
-  const { productId } = useParams();
-
   const [loading, error, productInfo] = useFetch(`products/${productId}`);
+
+  useEffect(() => {
+    if (productInfo) {
+      const {
+        title,
+        image,
+        price,
+        rating: { rate },
+        description,
+      } = productInfo;
+
+      setTitle(title);
+      setImage(image);
+      setPrice(price);
+      setRating(rate);
+      setDescription(description);
+    }
+  }, [productInfo]);
 
   if (loading) return <p>Loading...</p>;
 
   if (error) return <p>API is not working: {error}</p>;
 
-
-
-  console.log(productId);
-  console.log(productInfo);
-
   const handleEditProduct = () => {
     event.preventDefault();
     const data = {
+      ...productInfo,
       title,
       image,
       price,
       rating: { rate: rating },
       description,
     };
-    dispatch(updateProduct({ data }));
-    setTitle("");
-    setPrice("");
-    setRating("");
-    setDescription("");
-    setImage("");
+    dispatch(patchProduct({ id: productId, data }));
+    navigate("/");
   };
+
   return (
     <div className="py-12 md:py-24">
       <div className="grid items-center justify-items-center gap-x-4 gap-y-10 lg:grid-cols-1">
@@ -143,16 +155,18 @@ function EditProduct() {
                 type="submit"
                 className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
-                submit Product
+                Update Product
               </button>
-              {/* cancel */}
 
-              <button
-                type="button"
-                className="w-full rounded-md  bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              >
-                <Link to={`/`}>Cancel</Link>
-              </button>
+              {/* cancel */}
+              <Link to="/">
+                <button
+                  type="button"
+                  className="w-full rounded-md  bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                >
+                  Cancel
+                </button>
+              </Link>
             </form>
           </div>
         </div>

@@ -8,14 +8,15 @@ const menuItems = [
     name: "Add Product",
     href: "/add-product",
   },
+  { 
+    name: "Orders",
+    href: "/orders",
+   
+  },
   {
     name: "Cart",
     href: "/cart",
    
-  },
-  {
-    name: "Update Product",
-    href: "/update-product",
   },
 ];
 

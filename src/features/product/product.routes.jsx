@@ -15,7 +15,7 @@ const productRoutes = [
     element: <AddProduct />,
   },
   {
-    path: "update-product",
+    path: "update-product/:productId",
     element: <EditProduct />,
   },
 ];

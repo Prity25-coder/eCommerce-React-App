@@ -12,7 +12,13 @@ function ProductDetails() {
 
   if (error) return <p>API is not working: {error}</p>;
 
-  const { image, title, description } = productInfo ?? {};
+  const {
+    image,
+    title,
+    description,
+    price,
+    rating: { rate },
+  } = productInfo ?? {};
 
   return (
     <section className="overflow-hidden">
@@ -34,13 +40,11 @@ function ProductDetails() {
                   <StarIcon key={i} size={16} className="text-yellow-500" />
                 ))}
                 <span className="ml-3 inline-block text-xs font-semibold">
-                  4 Reviews
+                  {rate} Reviews
                 </span>
               </span>
             </div>
-            <p className="leading-relaxed">
-              {description}
-            </p>
+            <p className="leading-relaxed">{description}</p>
             <div className="mb-5 mt-6 flex items-center border-b-2 border-gray-100 pb-5">
               <div className="flex items-center">
                 <span className="mr-3 text-sm font-semibold">Color</span>
@@ -64,7 +68,7 @@ function ProductDetails() {
             </div>
             <div className="flex items-center justify-between">
               <span className="title-font text-xl font-bold text-gray-900">
-                ₹47,199
+                ₹{price}
               </span>
               <button
                 type="button"

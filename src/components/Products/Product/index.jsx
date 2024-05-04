@@ -1,19 +1,18 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
 import { deleteProduct } from "../../../Thunk/Product/productThunk";
 
 import { useDispatch } from "react-redux";
-import { updateProduct } from "../../../reducers/products/productsSlice";
 
 const Product = ({ productInfo }) => {
-  const { image, title, id } = productInfo;
   const dispatch = useDispatch();
+
+  const { image, title, id } = productInfo;
+  
 
   const handleDeleteProduct = () => {
     dispatch(deleteProduct({ id }));
-  };
-  const handleEditProduct = () => {
-    dispatch(updateProduct({ id, productInfo }));
   };
 
   return (
@@ -54,11 +53,10 @@ const Product = ({ productInfo }) => {
 
         <div className="mt-5 flex items-center space-x-2">
           <span className="block cursor-pointer p-1 px-2 text-xs font-medium h-9 w-9">
-            <Link to={`/update-product`}>
+            <Link to={`/update-product/${id}`}>
               <img
                 src="https://cdn-icons-png.flaticon.com/128/512/512732.png"
                 alt=""
-                onClick={handleEditProduct}
               />
             </Link>
           </span>

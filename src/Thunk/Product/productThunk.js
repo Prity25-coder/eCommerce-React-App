@@ -47,13 +47,13 @@ export const createProduct = createAsyncThunk(
   }
 );
 // update Product function
-export const putProduct = createAsyncThunk(
-  "products/update-product",
+export const patchProduct = createAsyncThunk(
+  "products/patch-product",
   async (arg, thunkAPI) => {
     thunkAPI.dispatch(setLoading());
     try {
-      const response = await fetch(getApiEndpoint(`products ${arg.id}`), {
-        method: "PUT",
+      const response = await fetch(getApiEndpoint(`products/${arg.id}`), {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
