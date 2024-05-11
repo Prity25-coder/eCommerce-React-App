@@ -8,6 +8,7 @@ import {
   deleteProductById,
 } from "../../reducers/products/productsSlice";
 import getApiEndpoint from "../../utils/getApiEndpoint";
+import { alertService } from "../../services";
 
 export const getProducts = createAsyncThunk(
   "products/get-products",
@@ -39,13 +40,16 @@ export const createProduct = createAsyncThunk(
       });
       const data = await response.json();
       console.log(data);
+      alertService.showSuccessAlert("Product created successfully...");
       thunkAPI.dispatch(addProduct(data));
     } catch (error) {
       console.error(error);
+      alertService.showErrorAlert("Product creation failed!");
       thunkAPI.dispatch(setApiError(error.message));
     }
   }
 );
+
 // update Product function
 export const patchProduct = createAsyncThunk(
   "products/patch-product",
@@ -82,11 +86,10 @@ export const deleteProduct = createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
-      
+
       const data = await response.json();
       console.log(data);
       thunkAPI.dispatch(deleteProductById({ id: data.id }));
-
     } catch (error) {
       console.error(error);
       thunkAPI.dispatch(setApiError(error.message));
