@@ -1,10 +1,16 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 
 import { PublicLayout } from "./Layouts";
-import { ErrorPage, CartTwo } from "./components";
+import { ErrorPage } from "./components";
 import { productRoutes } from "./features/product";
+import { cartRoutes } from "./features/cart";
 
 const appRoutes = createBrowserRouter([
+  {
+    path: "",
+    element: <Navigate to="/products" />,
+  },
+
   // Product related routes
   {
     path: "/",
@@ -18,16 +24,7 @@ const appRoutes = createBrowserRouter([
     path: "/",
     element: <PublicLayout />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "cart",
-        element: <CartTwo />,
-      },
-      // { // remove and add into order route
-      //   path: 'orders',
-      //   element: ,
-      // }
-    ],
+    children: [...cartRoutes],
   },
 ]);
 

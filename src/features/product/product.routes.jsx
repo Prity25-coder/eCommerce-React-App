@@ -3,7 +3,7 @@ import EditProduct from "../../components/EditProduct";
 
 const productRoutes = [
   {
-    path: "",
+    path: "products",
     element: <Products />,
   },
   {

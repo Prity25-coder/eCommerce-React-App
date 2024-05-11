@@ -30,14 +30,11 @@ function ProductDetails() {
             src={image}
           />
           <div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:pl-10">
-            <h2 className="text-sm font-semibold tracking-widest text-gray-500">
-              Nike
-            </h2>
             <h1 className="my-4 text-3xl font-semibold text-black">{title}</h1>
             <div className="my-4 flex items-center">
               <span className="flex items-center space-x-1">
                 {[...Array(5)].map((_, i) => (
-                  <StarIcon key={i} size={16} className="text-yellow-500" />
+                  <StarIcon key={i} width={15} height={15} className="text-yellow-500" />
                 ))}
                 <span className="ml-3 inline-block text-xs font-semibold">
                   {rate} Reviews

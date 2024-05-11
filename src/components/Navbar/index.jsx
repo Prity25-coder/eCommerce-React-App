@@ -1,31 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Link, NavLink } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartDetails } from "../../features/cart/Thunk/cartThunk";
+import { cartSelector } from "../../features/cart/Slices/cartSlice";
 
 const menuItems = [
   {
     name: "Add Product",
     href: "/add-product",
   },
-  { 
+  {
     name: "Orders",
     href: "/orders",
-   
-  },
-  {
-    name: "Cart",
-    href: "/cart",
-   
   },
 ];
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const dispatch = useDispatch();
+
+  const {
+    cartDetails: { cartItems = [] }, // todo
+  } = useSelector(cartSelector);
+
+  const totalCartItems = cartItems.length;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    dispatch(getCartDetails());
+  }, [dispatch]);
 
   return (
     <div className="relative w-full  bg-sky-800 font-medium">
@@ -56,6 +64,19 @@ function Navbar() {
                 </NavLink>
               </li>
             ))}
+
+            <li>
+              <NavLink
+                to="/cart"
+                className={({ isActive }) =>
+                  `text-lg font-semibold text-white hover:text-gray-900 ${
+                    isActive ? "text-orange-400" : ""
+                  }`
+                }
+              >
+                Cart ({totalCartItems})
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div className="hidden lg:block">

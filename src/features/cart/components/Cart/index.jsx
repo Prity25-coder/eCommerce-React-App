@@ -1,5 +1,9 @@
 import { Heart, Trash } from "lucide-react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { cartSelector } from "../../Slices/cartSlice";
 
 const products = [
   {
@@ -40,7 +44,12 @@ const products = [
   },
 ];
 
-function CartTwo() {
+function Cart() {
+  const { cartDetails } = useSelector(cartSelector);
+  const { cartItems, totalPrice, totalCartItems } = cartDetails;
+
+  console.log(cartItems);
+
   return (
     <div className="mx-auto max-w-7xl px-2 lg:px-0">
       <div className="mx-auto max-w-2xl py-8 lg:max-w-7xl">
@@ -153,9 +162,11 @@ function CartTwo() {
             <div>
               <dl className=" space-y-1 px-2 py-4">
                 <div className="flex items-center justify-between">
-                  <dt className="text-sm text-gray-800">Price (3 item)</dt>
+                  <dt className="text-sm text-gray-800">
+                    Price ({totalCartItems} item)
+                  </dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    ₹ 52,398
+                    ₹ {totalPrice}
                   </dd>
                 </div>
                 <div className="flex items-center justify-between pt-4">
@@ -177,7 +188,7 @@ function CartTwo() {
                     Total Amount
                   </dt>
                   <dd className="text-base font-medium text-gray-900">
-                    ₹ 48,967
+                    ₹ {totalPrice}
                   </dd>
                 </div>
               </dl>
@@ -197,4 +208,4 @@ function CartTwo() {
   );
 }
 
-export default CartTwo;
+export default Cart;

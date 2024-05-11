@@ -122,5 +122,55 @@
       },
       "description": "toaster setup complete"
     }
-  ]
+  ],
+  "cart": {
+    "totalCartItems": 3,
+    "totalPrice": 545.88,
+    "cartItems": [
+      {
+        "productInfo": {
+          "id": "3",
+          "title": "Nike Air Max 90",
+          "price": 55.99,
+          "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
+          "category": "men's clothing",
+          "image": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fd17b420-b388-4c8a-aaaa-e0a98ddf175f/dunk-high-retro-shoe-DdRmMZ.png",
+          "rating": {
+            "rate": 4.7,
+            "count": 500
+          }
+        },
+        "totalQty": 9
+      },
+      {
+        "productInfo": {
+          "id": "4",
+          "title": "Bangles",
+          "price": "19.99",
+          "description": "Peora Velvet Matching Kundan Floral Silk Thread Chura Bangle Set for Women Girls 2.6 inch Red",
+          "category": "men's clothing",
+          "image": "https://m.media-amazon.com/images/I/71jGbyR1zTL._SY575_.jpg",
+          "rating": {
+            "rate": 2.1
+          }
+        },
+        "totalQty": 1
+      },
+      {
+        "productInfo": {
+          "id": "8",
+          "title": "Generic",
+          "price": 10.99,
+          "description": "Women's Casual Long Tunic | Printed Top for Women",
+          "category": "jewelery",
+          "image": "https://m.media-amazon.com/images/I/414hLwbLbxL._SY679_.jpg",
+          "rating": {
+            "rate": 1.9,
+            "count": 100
+          }
+        },
+        "totalQty": 2
+      }
+    ]
+  }
 }

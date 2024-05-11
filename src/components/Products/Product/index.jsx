@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { deleteProduct } from "../../../Thunk/Product/productThunk";
 
 import { useDispatch } from "react-redux";
+import { addToCart } from "../../../features/cart/Thunk/cartThunk";
 
 const Product = ({ productInfo }) => {
   const dispatch = useDispatch();
 
   const { image, title, id } = productInfo;
-  
 
   const handleDeleteProduct = () => {
     dispatch(deleteProduct({ id }));
@@ -68,14 +68,13 @@ const Product = ({ productInfo }) => {
             />
           </span>
         </div>
-        <Link to={`cart`}>
-          <button
-            type="button"
-            className="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            Add to Cart
-          </button>
-        </Link>
+        <button
+          type="button"
+          className="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+          onClick={() => dispatch(addToCart(productInfo))}
+        >
+          Add to Cart
+        </button>
 
         <Link to={`products/${id}`}>
           <button

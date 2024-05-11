@@ -1,0 +1,37 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  setError,
+  setInitialCartState,
+  setLoading,
+  updateCart,
+} from "../Slices/cartSlice";
+import cartService from "../services/cartService";
+
+const getCartDetails = createAsyncThunk("cart/get", async (_, thunkAPI) => {
+  thunkAPI.dispatch(setLoading());
+  try {
+    const cartInfo = await cartService.getCartInfo();
+    // console.log("cartInfo : ", cartInfo);
+    thunkAPI.dispatch(setInitialCartState(cartInfo));
+  } catch (error) {
+    console.log(error);
+    thunkAPI.dispatch(setError(error.message));
+  }
+});
+
+const addToCart = createAsyncThunk("cart/add", async (payload, thunkAPI) => {
+  thunkAPI.dispatch(setLoading());
+  const { cart } = thunkAPI.getState();
+
+  const cartInfo = cartService.getUpdatedCart(cart.cartDetails, payload);
+
+  try {
+    const updatedCartInfo = await cartService.addToCart(cartInfo);
+    thunkAPI.dispatch(updateCart(updatedCartInfo));
+  } catch (error) {
+    console.log(error);
+    thunkAPI.dispatch(setError(error.message));
+  }
+});
+
+export { getCartDetails, addToCart };
