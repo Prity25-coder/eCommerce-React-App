@@ -23,11 +23,19 @@ const cartSlice = createSlice({
     updateCart: (state, action) => {
       state.cartDetails = action.payload;
     },
+    removeCart: (state, action) => {
+      state.cartDetails = action.payload;
+    },
   },
 });
 
-export const { setInitialCartState, setLoading, setError, updateCart } =
-  cartSlice.actions;
+export const {
+  setInitialCartState,
+  setLoading,
+  setError,
+  updateCart,
+  removeCart,
+} = cartSlice.actions;
 
 export const cartSelector = (store) => store.cart;
 

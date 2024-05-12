@@ -4,7 +4,9 @@ import {
   setInitialCartState,
   setLoading,
   updateCart,
+  removeCart,
 } from "../Slices/cartSlice";
+
 import cartService from "../services/cartService";
 
 const getCartDetails = createAsyncThunk("cart/get", async (_, thunkAPI) => {
@@ -34,4 +36,21 @@ const addToCart = createAsyncThunk("cart/add", async (payload, thunkAPI) => {
   }
 });
 
-export { getCartDetails, addToCart };
+const removeToCart = createAsyncThunk(
+  "cart/remove",
+  async (payload, thunkAPI) => {
+    thunkAPI.dispatch(setLoading());
+    const { cart } = thunkAPI.getState();
+    const cartInfo = cartService.removeCartItem(cart.cartDetails, payload);
+
+    try {
+      const removeCartInfo = await cartService.removeCartItem(cartInfo);
+      thunkAPI.dispatch(removeCart(removeCartInfo));
+    } catch (error) {
+      console.log(error);
+      thunkAPI.dispatch(setError(error.message));
+    }
+  }
+);
+
+export { getCartDetails, addToCart, removeToCart };

@@ -15,7 +15,7 @@ class CartService {
       },
       body: JSON.stringify(cartInfo),
     };
-    const response = await fetch(getApiEndpoint('cart'), options);
+    const response = await fetch(getApiEndpoint("cart"), options);
     return await response.json();
   };
 
@@ -35,6 +35,23 @@ class CartService {
     return prevCartDetails;
   };
 
+  removeCartItem = (cartDetails, itemInfo) => {
+    const prevCartDetails = JSON.parse(JSON.stringify(cartDetails));
+    const { id } = itemInfo;
+    const { cartItems = [] } = prevCartDetails;
+    const item = cartItems.find((item) => item.productInfo.id === id);
+    if (item) {
+      item.totalQty -= 1;
+    } else {
+      cartItems.splice({ productInfo: itemInfo, totalQty: 1 });
+      // prevCartDetails.totalCartItems -= 1;
+      prevCartDetails.totalCartItems -= 1
+
+    }
+    prevCartDetails.totalPrice -= Number(itemInfo.price);
+
+    return prevCartDetails;
+  };
 }
 
 const cartService = new CartService();

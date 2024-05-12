@@ -9,7 +9,7 @@ import { addToCart } from "../../../features/cart/Thunk/cartThunk";
 const Product = ({ productInfo }) => {
   const dispatch = useDispatch();
 
-  const { image, title, id } = productInfo;
+  const { image, title, price, id } = productInfo;
 
   const handleDeleteProduct = () => {
     dispatch(deleteProduct({ id }));
@@ -33,14 +33,8 @@ const Product = ({ productInfo }) => {
         </p> */}
 
         <div className="mt-4">
-          <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
-            #Sneakers
-          </span>
-          <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
-            #Nike
-          </span>
-          <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
-            #Airmax
+          <span className="title-font text-x font-bold text-gray-900">
+            ₹ {price}
           </span>
         </div>
 
