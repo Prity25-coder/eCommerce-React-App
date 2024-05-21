@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { cartSelector } from "../../Slices/cartSlice";
-import { addToCart, removeToCart } from "../../Thunk/cartThunk";
-import  cartService  from "../../../../features/cart/services/cartService";
+import { addToCart, decreaseCartItem, removeCartProduct } from "../../Thunk/cartThunk";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -29,7 +28,7 @@ function Cart() {
             </h2>
 
             <ul role="list" className="divide-y divide-gray-200">
-              {cartItems?.map(({ productInfo, totalQty }) => (
+              {cartItems?.map(({ productInfo, totalQty }, index) => (
                 <div key={productInfo.id} className="">
                   <li className="flex py-6 sm:py-6 ">
                     <div className="flex-shrink-0">
@@ -75,7 +74,7 @@ function Cart() {
                       <button
                         type="button"
                         className="h-7 w-7"
-                        onClick={() => dispatch(cartService.removeCartItem(productInfo))}
+                        onClick={() => dispatch(decreaseCartItem(productInfo))}
                       >
                         -
                       </button>
@@ -88,7 +87,7 @@ function Cart() {
                       <button
                         type="button"
                         className="flex h-7 w-7 items-center justify-center"
-                        onClick={() => dispatch(cartService.getUpdatedCart(productInfo))}
+                        onClick={() => dispatch(addToCart(productInfo))}
                       >
                         +
                       </button>
@@ -97,7 +96,7 @@ function Cart() {
                       <button
                         type="button"
                         className="flex items-center space-x-1 px-2 py-1 pl-0"
-                        onClick={() => dispatch(removeToCart(productInfo))}
+                        onClick={() => dispatch(removeCartProduct(index))}
                       >
                         <Trash size={12} className="text-red-500" />
                         <span className="text-xs font-medium text-red-500">
@@ -128,7 +127,7 @@ function Cart() {
                     Price ({totalCartItems} item)
                   </dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    ₹ {totalPrice}
+                    ₹ {totalPrice.toFixed(2)}
                   </dd>
                 </div>
                 <div className="flex items-center justify-between pt-4">
@@ -150,7 +149,7 @@ function Cart() {
                     Total Amount
                   </dt>
                   <dd className="text-base font-medium text-gray-900">
-                    ₹ {totalPrice}
+                    ₹ {totalPrice.toFixed(2)}
                   </dd>
                 </div>
               </dl>

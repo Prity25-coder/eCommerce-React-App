@@ -124,66 +124,26 @@
     }
   ],
   "cart": {
-    "totalCartItems": 4,
-    "totalPrice": 4029.8,
+    "totalCartItems": 2,
+    "totalPrice": 20.980000000000246,
     "cartItems": [
       {
         "productInfo": {
-          "id": "3",
-          "title": "Nike Air Max 90",
-          "price": 55.99,
-          "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
-          "category": "men's clothing",
-          "image": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fd17b420-b388-4c8a-aaaa-e0a98ddf175f/dunk-high-retro-shoe-DdRmMZ.png",
-          "rating": {
-            "rate": 4.7,
-            "count": 500
-          }
+          "id": "7",
+          "title": "Butterfly Crystals Gold Plated Ring ",
+          "price": 9.99,
+          "image": "https://m.media-amazon.com/images/I/515wShQFphL._SY625_.jpg"
         },
-        "totalQty": 10
-      },
-      {
-        "productInfo": {
-          "id": "4",
-          "title": "Bangles",
-          "price": "19.99",
-          "description": "Peora Velvet Matching Kundan Floral Silk Thread Chura Bangle Set for Women Girls 2.6 inch Red",
-          "category": "men's clothing",
-          "image": "https://m.media-amazon.com/images/I/71jGbyR1zTL._SY575_.jpg",
-          "rating": {
-            "rate": 2.1
-          }
-        },
-        "totalQty": 7
+        "totalQty": 1
       },
       {
         "productInfo": {
           "id": "8",
           "title": "Generic",
           "price": 10.99,
-          "description": "Women's Casual Long Tunic | Printed Top for Women",
-          "category": "jewelery",
-          "image": "https://m.media-amazon.com/images/I/414hLwbLbxL._SY679_.jpg",
-          "rating": {
-            "rate": 1.9,
-            "count": 100
-          }
+          "image": "https://m.media-amazon.com/images/I/414hLwbLbxL._SY679_.jpg"
         },
-        "totalQty": 3
-      },
-      {
-        "productInfo": {
-          "id": "5",
-          "title": "Lobster Clasp",
-          "price": "1099",
-          "description": "Peora 18K Gold Plated Traditional Jewellery Kundan Pearl Layered Long Necklace Earring Maang Tika Set for Women Fancy",
-          "category": "jewelery",
-          "image": "https://m.media-amazon.com/images/I/61AaEQ7YycL._SY575_.jpg",
-          "rating": {
-            "rate": "4.9"
-          }
-        },
-        "totalQty": 3
+        "totalQty": 1
       }
     ]
   }

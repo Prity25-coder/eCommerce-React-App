@@ -36,15 +36,15 @@ const addToCart = createAsyncThunk("cart/add", async (payload, thunkAPI) => {
   }
 });
 
-const removeToCart = createAsyncThunk(
-  "cart/remove",
+const decreaseCartItem = createAsyncThunk(
+  "cart/decrease",
   async (payload, thunkAPI) => {
     thunkAPI.dispatch(setLoading());
     const { cart } = thunkAPI.getState();
-    const cartInfo = cartService.removeCartItem(cart.cartDetails, payload);
+    const cartInfo = cartService.decreaseCartItem(cart.cartDetails, payload);
 
     try {
-      const removeCartInfo = await cartService.removeCartItem(cartInfo);
+      const removeCartInfo = await cartService.addToCart(cartInfo);
       thunkAPI.dispatch(removeCart(removeCartInfo));
     } catch (error) {
       console.log(error);
@@ -53,4 +53,22 @@ const removeToCart = createAsyncThunk(
   }
 );
 
-export { getCartDetails, addToCart, removeToCart };
+const removeCartProduct = createAsyncThunk(
+  "cart/remove",
+  async (payload, thunkAPI) => {
+    thunkAPI.dispatch(setLoading());
+    const { cart } = thunkAPI.getState();
+    const cartInfo = cartService.removeCartItem(cart.cartDetails, payload);
+
+    try {
+      const removeCartInfo = await cartService.addToCart(cartInfo);
+      thunkAPI.dispatch(removeCart(removeCartInfo));
+    } catch (error) {
+      console.log(error);
+      thunkAPI.dispatch(setError(error.message));
+    }
+  }
+);
+
+
+export { getCartDetails, addToCart, decreaseCartItem,removeCartProduct };
