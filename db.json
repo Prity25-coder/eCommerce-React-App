@@ -93,16 +93,6 @@
       }
     },
     {
-      "id": "a824",
-      "title": "Watch",
-      "image": "https://m.media-amazon.com/images/I/71nD+lzEoBL._SY606_.jpg",
-      "price": "1000",
-      "rating": {
-        "rate": "5"
-      },
-      "description": "Joker & Witch Aimee Analogue Watch"
-    },
-    {
       "id": "5b45",
       "title": "Test Product udpate",
       "image": "https://m.media-amazon.com/images/I/31UgkW999hL._SX300_SY300_QL70_FMwebp_.jpg",
@@ -121,6 +111,16 @@
         "rate": "4.7"
       },
       "description": "toaster setup complete"
+    },
+    {
+      "id": "92ef",
+      "title": "Priya",
+      "image": "https://m.media-amazon.com/images/I/61LUTXc8BfL._SY679_.jpg",
+      "price": "600",
+      "rating": {
+        "rate": "4.5"
+      },
+      "description": "sadsa"
     }
   ],
   "cart": {

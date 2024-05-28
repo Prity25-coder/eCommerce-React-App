@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { cartSelector } from "../../Slices/cartSlice";
-import { addToCart, decreaseCartItem, removeCartProduct } from "../../Thunk/cartThunk";
+import {
+  addToCart,
+  decreaseCartItem,
+  removeCartProduct,
+} from "../../Thunk/cartThunk";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -156,6 +160,15 @@ function Cart() {
               <div className="px-2 pb-4 font-medium text-green-700">
                 You will save ₹ 3,431 on this order
               </div>
+            </div>
+
+            <div>
+              <button
+                type="button"
+                className="w-full rounded-md  bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-200"
+              >
+                Proceed to Buy
+              </button>
             </div>
             <div className="d-flex justify-center font-medium text-yellow-700">
               <Link to={`/`}>

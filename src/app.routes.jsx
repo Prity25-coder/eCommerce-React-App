@@ -4,6 +4,7 @@ import { PublicLayout } from "./Layouts";
 import { ErrorPage } from "./components";
 import { productRoutes } from "./features/product";
 import { cartRoutes } from "./features/cart";
+import {orderRoutes} from "./features/order/";
 
 const appRoutes = createBrowserRouter([
   {
@@ -25,6 +26,14 @@ const appRoutes = createBrowserRouter([
     element: <PublicLayout />,
     errorElement: <ErrorPage />,
     children: [...cartRoutes],
+  },
+
+  // Order related routes
+  {
+    path: "/",
+    element: <PublicLayout />,
+    errorElement: <ErrorPage />,
+    children: [...orderRoutes],
   },
 ]);
 

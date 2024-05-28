@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: [],
+  originalProducts: [],
   loading: false,
   error: null,
+  isSorted: false,
 };
 
 const productsSlice = createSlice({
@@ -12,6 +14,7 @@ const productsSlice = createSlice({
   reducers: {
     initializeProducts: (state, action) => {
       state.products = action.payload;
+      state.originalProducts = action.payload;
       state.loading = false;
     },
 
@@ -36,7 +39,16 @@ const productsSlice = createSlice({
       state.loading = false;
     },
 
-    sortByPrice: (state, action) => {},
+    sortByPrice: (state) => {
+      state.products = [...state.products].sort((a, b) => a.price - b.price);
+      state.loading = false;
+      state.isSorted = true;
+    },
+    clearSort: (state) => {
+      state.products = state.originalProducts;
+      state.isSorted = false;
+      state.loading = false;
+    },
 
     deleteProductById: (state, action) => {
       state.products = state.products.filter(
@@ -56,6 +68,7 @@ export const {
   setApiError,
   updateProduct,
   sortByPrice,
+  clearSort,
   deleteProductById,
 } = productsSlice.actions;
 

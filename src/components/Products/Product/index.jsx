@@ -70,7 +70,7 @@ const Product = ({ productInfo }) => {
           Add to Cart
         </button>
 
-        <Link to={`products/${id}`}>
+        <Link to={`/products/${id}`}>
           <button
             type="button"
             className="mt-4 w-full rounded-sm bg-yellow-400 px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-yellow-400/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
