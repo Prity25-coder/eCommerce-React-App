@@ -91,36 +91,6 @@
         "rate": 2.9,
         "count": 470
       }
-    },
-    {
-      "id": "5b45",
-      "title": "Test Product udpate",
-      "image": "https://m.media-amazon.com/images/I/31UgkW999hL._SX300_SY300_QL70_FMwebp_.jpg",
-      "price": "899",
-      "rating": {
-        "rate": "3.9"
-      },
-      "description": "final update product testing"
-    },
-    {
-      "id": "77fe",
-      "title": "test toaster",
-      "image": "https://m.media-amazon.com/images/I/41GsqdiCvOL._SX300_SY300_QL70_FMwebp_.jpg",
-      "price": "599",
-      "rating": {
-        "rate": "4.7"
-      },
-      "description": "toaster setup complete"
-    },
-    {
-      "id": "92ef",
-      "title": "Priya",
-      "image": "https://m.media-amazon.com/images/I/61LUTXc8BfL._SY679_.jpg",
-      "price": "600",
-      "rating": {
-        "rate": "4.5"
-      },
-      "description": "sadsa"
     }
   ],
   "cart": {
