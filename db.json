@@ -95,7 +95,7 @@
   ],
   "cart": {
     "totalCartItems": 2,
-    "totalPrice": 20.980000000000246,
+    "totalPrice": 20.980000000000242,
     "cartItems": [
       {
         "productInfo": {
@@ -116,5 +116,6 @@
         "totalQty": 1
       }
     ]
-  }
+  },
+  "orders": []
 }
