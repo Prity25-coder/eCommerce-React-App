@@ -16,7 +16,9 @@ class CartService {
       body: JSON.stringify(cartInfo),
     };
     const response = await fetch(getApiEndpoint("cart"), options);
-    return await response.json();
+    await response.json();
+    console.log(cartInfo);
+    return cartInfo;
   };
 
   getUpdatedCart = (cartDetails, itemInfo) => {

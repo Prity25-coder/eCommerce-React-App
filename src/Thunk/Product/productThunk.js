@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, nanoid } from "@reduxjs/toolkit";
 import {
   addProduct,
   initializeProducts,
@@ -13,6 +13,12 @@ import { alertService } from "../../services";
 export const getProducts = createAsyncThunk(
   "products/get-products",
   async (arg, thunkAPI) => {
+    const {
+      allProducts: { isLoaded },
+    } = thunkAPI.getState();
+
+    if (isLoaded) return;
+
     thunkAPI.dispatch(setLoading());
     try {
       const response = await fetch(getApiEndpoint("products"));
@@ -38,9 +44,12 @@ export const createProduct = createAsyncThunk(
         },
         body: JSON.stringify(arg.data),
       });
-      const data = await response.json();
-      console.log(data);
-      thunkAPI.dispatch(addProduct({ data: arg.data }));
+      await response.json();
+      thunkAPI.dispatch(
+        addProduct({
+          data: { id: nanoid(10), ...arg.data },
+        })
+      );
 
       alertService.showSuccessAlert("Product created successfully...");
     } catch (error) {
@@ -55,19 +64,29 @@ export const createProduct = createAsyncThunk(
 export const patchProduct = createAsyncThunk(
   "products/patch-product",
   async (arg, thunkAPI) => {
+    const {
+      allProducts: { products },
+    } = thunkAPI.getState();
+
     thunkAPI.dispatch(setLoading());
     try {
-      const response = await fetch(getApiEndpoint(`products/${arg.id}`), {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(arg.data),
-      });
-      const data = await response.json();
-      console.log(data);
+      console.log(arg.data);
+      if (
+        !products.find(
+          (product) => product.id === arg.data.id && product.isAddedRecently
+        )
+      ) {
+        const response = await fetch(getApiEndpoint(`products/${arg.id}`), {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(arg.data),
+        });
+        await response.json();
+      }
       alertService.showSuccessAlert("Product updated successfully!");
-      thunkAPI.dispatch(updateProduct(data));
+      thunkAPI.dispatch(updateProduct(arg.data));
     } catch (error) {
       console.error(error);
       alertService.showErrorAlert("Product update failed!");
@@ -83,15 +102,23 @@ export const deleteProduct = createAsyncThunk(
     console.log(arg);
     thunkAPI.dispatch(setLoading());
     try {
-      const response = await fetch(getApiEndpoint(`products/${arg.id}`), {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const {
+        allProducts: { products },
+      } = thunkAPI.getState();
+      if (
+        !products.find(
+          (product) => product.id === arg.id && product.isAddedRecently
+        )
+      ) {
+        const response = await fetch(getApiEndpoint(`products/${arg.id}`), {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
-      const data = await response.json();
-      console.log(data);
+        await response.json();
+      }
 
       thunkAPI.dispatch(deleteProductById({ id: arg.id }));
       alertService.showSuccessAlert("Product deleted successfully...");

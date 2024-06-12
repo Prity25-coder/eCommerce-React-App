@@ -6,7 +6,11 @@ import useFetch from "../../hooks/useFetch";
 function ProductDetails() {
   const { productId } = useParams();
 
-  const [loading, error, productInfo] = useFetch(`products/${productId}`);
+  const [loading, error, productInfo] = useFetch({
+    url: `products/${productId}`,
+    fetchingFor: 'productDetails',
+    productId,
+  });
 
   if (loading) return <p>Loading...</p>;
 
@@ -34,7 +38,12 @@ function ProductDetails() {
             <div className="my-4 flex items-center">
               <span className="flex items-center space-x-1">
                 {[...Array(5)].map((_, i) => (
-                  <StarIcon key={i} width={15} height={15} className="text-yellow-500" />
+                  <StarIcon
+                    key={i}
+                    width={15}
+                    height={15}
+                    className="text-yellow-500"
+                  />
                 ))}
                 <span className="ml-3 inline-block text-xs font-semibold">
                   {rate} Reviews
