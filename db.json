@@ -119,7 +119,7 @@
   },
   "orders": [
     {
-      "orderId: "12",
+      "orderId": "12",
       "totalCartItems": 2,
       "totalPrice": 20.980000000000242,
       "orderItems": [
