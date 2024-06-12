@@ -70,5 +70,13 @@ const removeCartProduct = createAsyncThunk(
   }
 );
 
+const proceedToOrder = createAsyncThunk(
+  "order/add",
+  async(payload, thunkAPI) => {
+    thunkAPI.dispatch(setLoading())
+    const {order} = thunkAPI.getState()
+  }
+)
 
-export { getCartDetails, addToCart, decreaseCartItem,removeCartProduct };
+
+export { getCartDetails, addToCart, decreaseCartItem,removeCartProduct,proceedToOrder };

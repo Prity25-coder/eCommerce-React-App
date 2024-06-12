@@ -117,5 +117,21 @@
       }
     ]
   },
-  "orders": []
+  "orders": [
+    {
+      "totalCartItems": 2,
+      "totalPrice": 20.980000000000242,
+      "cartItems": [
+        {
+          "productInfo": {
+            "id": "7",
+            "title": "Butterfly Crystals Gold Plated Ring ",
+            "price": 9.99,
+            "image": "https://m.media-amazon.com/images/I/515wShQFphL._SY625_.jpg"
+          },
+          "totalQty": 1
+        }
+      ]
+    }
+  ]
 }

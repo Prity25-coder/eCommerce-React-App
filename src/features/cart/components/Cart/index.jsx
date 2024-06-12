@@ -6,6 +6,7 @@ import { cartSelector } from "../../Slices/cartSlice";
 import {
   addToCart,
   decreaseCartItem,
+  proceedToOrder,
   removeCartProduct,
 } from "../../Thunk/cartThunk";
 
@@ -166,6 +167,7 @@ function Cart() {
               <button
                 type="button"
                 className="w-full rounded-md  bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-200"
+                onClick={proceedToOrder}
               >
                 Proceed to Buy
               </button>

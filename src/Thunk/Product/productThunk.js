@@ -40,8 +40,9 @@ export const createProduct = createAsyncThunk(
       });
       const data = await response.json();
       console.log(data);
+      thunkAPI.dispatch(addProduct({ data: arg.data }));
+
       alertService.showSuccessAlert("Product created successfully...");
-      thunkAPI.dispatch(addProduct(data));
     } catch (error) {
       console.error(error);
       alertService.showErrorAlert("Product creation failed!");
@@ -65,9 +66,11 @@ export const patchProduct = createAsyncThunk(
       });
       const data = await response.json();
       console.log(data);
+      alertService.showSuccessAlert("Product updated successfully!");
       thunkAPI.dispatch(updateProduct(data));
     } catch (error) {
       console.error(error);
+      alertService.showErrorAlert("Product update failed!");
       thunkAPI.dispatch(setApiError(error.message));
     }
   }
@@ -89,9 +92,12 @@ export const deleteProduct = createAsyncThunk(
 
       const data = await response.json();
       console.log(data);
-      thunkAPI.dispatch(deleteProductById({ id: data.id }));
+
+      thunkAPI.dispatch(deleteProductById({ id: arg.id }));
+      alertService.showSuccessAlert("Product deleted successfully...");
     } catch (error) {
       console.error(error);
+      alertService.showErrorAlert("Product deletion failed!");
       thunkAPI.dispatch(setApiError(error.message));
     }
   }
