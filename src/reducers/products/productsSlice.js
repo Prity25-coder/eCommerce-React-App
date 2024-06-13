@@ -6,6 +6,7 @@ const initialState = {
   loading: false,
   error: null,
   isSorted: false,
+  isLoaded: false,
 };
 
 const productsSlice = createSlice({
@@ -16,6 +17,7 @@ const productsSlice = createSlice({
       state.products = action.payload;
       state.originalProducts = action.payload;
       state.loading = false;
+      state.isLoaded = true;
     },
 
     setLoading: (state) => {
@@ -28,7 +30,7 @@ const productsSlice = createSlice({
     },
 
     addProduct: (state, action) => {
-      state.products.push(action.payload);
+      state.products.push(action.payload.data);
       state.loading = false;
     },
 

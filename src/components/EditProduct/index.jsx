@@ -17,7 +17,11 @@ function EditProduct() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
 
-  const [loading, error, productInfo] = useFetch(`products/${productId}`);
+  const [loading, error, productInfo] = useFetch({
+    url: `products/${productId}`,
+    fetchingFor: 'editProduct',
+    productId,
+  });
 
   useEffect(() => {
     if (productInfo) {

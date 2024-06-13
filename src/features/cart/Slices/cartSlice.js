@@ -1,6 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { loading: false, error: null, cartDetails: {} };
+const initialState = {
+  loading: false,
+  isLoaded: false,
+  isProcessing: false,
+  error: null,
+  cartDetails: {
+    totalCartItems: 0,
+    totalPrice: 0,
+    cartItems: [],
+  },
+};
 
 const cartSlice = createSlice({
   name: "cart",
@@ -9,10 +19,22 @@ const cartSlice = createSlice({
     setInitialCartState: (state, action) => {
       state.loading = false;
       state.cartDetails = action.payload;
+      state.isLoaded = true;
     },
 
     setLoading: (state) => {
       state.loading = true;
+    },
+
+    setOrderProcessing: (state, action) => {
+      state.isProcessing = action.payload;
+      if (!action.payload) {
+        state.cartDetails = {
+          totalCartItems: 0,
+          totalPrice: 0,
+          cartItems: [],
+        };
+      }
     },
 
     setError: (state, action) => {
@@ -35,6 +57,7 @@ export const {
   setError,
   updateCart,
   removeCart,
+  setOrderProcessing,
 } = cartSlice.actions;
 
 export const cartSelector = (store) => store.cart;

@@ -22,6 +22,7 @@ function AddProduct() {
       price,
       rating: { rate: rating },
       description,
+      isAddedRecently: true,
     };
     dispatch(createProduct({ data }));
     setTitle("");

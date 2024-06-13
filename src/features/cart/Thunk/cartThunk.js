@@ -10,6 +10,12 @@ import {
 import cartService from "../services/cartService";
 
 const getCartDetails = createAsyncThunk("cart/get", async (_, thunkAPI) => {
+  const {
+    allProducts: { isLoaded },
+  } = thunkAPI.getState();
+
+  if (isLoaded) return;
+
   thunkAPI.dispatch(setLoading());
   try {
     const cartInfo = await cartService.getCartInfo();
@@ -70,13 +76,10 @@ const removeCartProduct = createAsyncThunk(
   }
 );
 
-const proceedToOrder = createAsyncThunk(
-  "order/add",
-  async(payload, thunkAPI) => {
-    thunkAPI.dispatch(setLoading())
-    const {order} = thunkAPI.getState()
-  }
-)
 
-
-export { getCartDetails, addToCart, decreaseCartItem,removeCartProduct,proceedToOrder };
+export {
+  getCartDetails,
+  addToCart,
+  decreaseCartItem,
+  removeCartProduct,
+};
